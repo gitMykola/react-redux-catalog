@@ -1,20 +1,19 @@
-import {
-    GET_PRODUCTS,
-    UPDATE_PRODUCT,
-    ADD_PRODUCT,
-    DELETE_PRODUCT
-} from './actionTypes';
+import { CatalogActionTypes } from './actionTypes';
+
 const initalState = {
-    products: []
+    products: [],
+    error: {
+        status: false,
+        message: ''
+    }
 };
 function catalog(state = initalState, action){
     const actions = {
-        GET_PRODUCTS: (payload) => {return {...state, ...{products: payload}}},
-        UPDATE_PRODUCT: (payload) => {return {...state, ...{products: payload}}},
-        ADD_PRODUCT: (payload) => {return {...state, ...{products: payload}}},
-        DELETE_PRODUCT: (payload) => {return {...state, ...{products: payload}}}
+        [ CatalogActionTypes.GET_PRODUCTS ]: (payload) => {return {...state, ...payload}},
+        [ CatalogActionTypes.UPDATE_PRODUCT ]: (payload) => {return {...state, ...payload}},
+        [ CatalogActionTypes.ADD_PRODUCT ]: (payload) => {return {...state, ...payload}},
+        [ CatalogActionTypes.DELETE_PRODUCT ]: (payload) => {return {...state, ...payload}}
     };
-    console.dir(actions);
-    return !actions[action.type] ? state: actions[action.type(action.payload)];
-};
+    return !actions[action.type] ? state: actions[action.type](action.payload);
+}
 export default catalog;

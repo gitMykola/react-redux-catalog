@@ -1,0 +1,16 @@
+{
+  "name": "react-redux-catalog",
+  "version": "1.0.0",
+  "description": "traning",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "keywords": [
+    "react",
+    "redux",
+    "frontend"
+  ],
+  "author": "Mykola Borodyn",
+  "license": "ISC"
+}

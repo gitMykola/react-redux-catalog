@@ -1,34 +1,41 @@
-import {
-    GET_PRODUCTS,
-    ADD_PRODUCT,
-    UPDATE_PRODUCT,
-    DELETE_PRODUCT
-} from './actionTypes';
+import { CatalogActionTypes } from './actionTypes';
+import { setActionError } from '../../libs/utils';
 
-export function getProducts(){
+export const getProducts = () => {
     return {
-        type: GET_PRODUCTS,
-        payload: { products: [{
-            id:0,
-            title:'some title'
-        }]}
+        type: CatalogActionTypes.GET_PRODUCTS,
+        payload: fetch(process.env.REACT_APP_API_URL + 'products'),
+        error: setActionError()
     };
-}
-export function addProduct(){
+};
+export const addProduct = () => {
     return {
-        type: ADD_PRODUCT,
-        payload: { products: []}
+        type: CatalogActionTypes.ADD_PRODUCT,
+        payload: [],
+        error: setActionError()
     };
-}
+};
 export function updateProduct(){
     return {
-        type: UPDATE_PRODUCT,
-        payload: { products: []}
+        type: CatalogActionTypes.UPDATE_PRODUCT,
+        payload: {
+            products: [{
+                id:0,
+                title:'some title'
+            }],
+            error: setActionError()
+        }
     };
 }
 export function deleteProduct(){
     return {
-        type: DELETE_PRODUCT,
-        payload: { products: []}
+        type: CatalogActionTypes.DELETE_PRODUCT,
+        payload: {
+            products: [{
+                id:0,
+                title:'some title'
+            }],
+            error: setActionError()
+        }
     };
 }
