@@ -62,7 +62,7 @@ class Login extends React.Component{
             console.dir(this.state);
         };
         this.state = {
-            open: false,
+            open: props.loginActive,
             email: '',
             password: ''
         };
