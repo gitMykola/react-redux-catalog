@@ -4,7 +4,8 @@ import { setActionError } from '../../libs/utils';
 export const getProducts = () => {
     return {
         type: CatalogActionTypes.GET_PRODUCTS,
-        payload: fetch(process.env.REACT_APP_API_URL + 'products'),
+        payload: fetch(process.env.REACT_APP_API_URL + 'products')
+            .then(response => response.json()),
         error: setActionError()
     };
 };

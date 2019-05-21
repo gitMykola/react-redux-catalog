@@ -6,14 +6,14 @@ import {
 export const promiseMiddleware = store => next => action => {
     if(isPromise(action.payload)){
         action.payload
-            .then(response => response.json())
-            .then(response => {
+            .then(payload => {
                 action.error = setActionError();
-                action.payload = { ...response };
+                action.payload = { ...payload };
                 store.dispatch(action);
             })
             .catch(error => {
                 action.error = setActionError(error.message);
+                action.payload = {};
                 store.dispatch(action);
             });
         return true;
